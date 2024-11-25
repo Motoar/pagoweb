@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago con Billetera Virtual</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .alias {
+            font-weight: bold;
+            color: #333;
+        }
+        .important {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Moto ar -->
+    <img src="https://i.imgur.com/xg3yRuS.png" alt="motoar" class="logo">
+    
+    <h1>Pago de Pedido</h1>
+    <p class="instructions">
+        Para completar tu pago, copia este alias de mi billetera virtual:
+    </p>
+    <ul class="instructions">
+        <li><span class="alias" id="alias">ANDEYTO.UALA</span></li>
+        <p>(titular del alias es: Andrés Villegas)</p>
+    </ul>
+    <button id="copyButton" class="button">Copiar Alias</button>
+    <p class="instructions">Una vez realizado el pago, por favor envía el comprobante de la transacción a través de WhatsApp para confirmar tu pedido.</p>
+    <p class="important">⚠️ Es imprescindible enviar el comprobante para evitar fraudes o inconvenientes. ⚠️</p>
+    <a href="https://wa.me/5491173666574" target="_blank" class="button">Enviar Comprobante por WhatsApp</a>
+
+    <script>
+        // Función para copiar el alias al portapapeles
+        const copyButton = document.getElementById('copyButton');
+        const alias = document.getElementById('alias');
+
+        copyButton.addEventListener('click', function() {
+            // Seleccionar el texto del alias
+            const range = document.createRange();
+            range.selectNode(alias);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+
+            // Copiar el texto seleccionado
+            document.execCommand('copy');
+
+            // Alerta al usuario
+            alert('Alias copiado al portapapeles');
+        });
+    </script>
+</body>
+</html>
